@@ -55,7 +55,7 @@ class AdminPanelProvider extends PanelProvider
             ->authGuard('web')
             ->navigationItems([
                 \Filament\Navigation\NavigationItem::make()
-                    ->label('Ver sitio')
+                    ->label('View site')
                     ->icon('heroicon-o-eye')
                     ->url('/')
                     ->openUrlInNewTab(),
