@@ -84,7 +84,7 @@
                 }
             }"
             x-init="init"
-            class="flex flex-col md:flex-row gap-8"
+            class="flex flex-col md:flex-row gap-8 items-start"
         >
             {{-- Reproductor principal --}}
             <div class="flex-1 bg-white/90 border border-amber-100 rounded-xl shadow p-4 sm:p-8 flex flex-col items-center min-w-[0]">
