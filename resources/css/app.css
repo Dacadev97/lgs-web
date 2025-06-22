@@ -1,0 +1,99 @@
+/* Google Fonts - Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+
+@source "../views/**/*.blade.php";
+@source "../views/**/*.php";
+@source "../js/**/*.js";
+@source "../../app/Livewire/**/*.php";
+
+@theme {
+    --font-family-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Custom pagination styles for Livewire */
+.pagination {
+    @apply flex justify-center space-x-1;
+}
+
+.page-link {
+    @apply px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover: bg-gray-100 hover:text-gray-700 transition-colors duration-200;
+}
+
+.page-item.active .page-link {
+    @apply bg-amber-500 border-amber-500 text-white hover: bg-amber-600 hover:border-amber-600;
+}
+
+.page-link:focus {
+    @apply outline-none ring-2 ring-amber-500/50;
+}
+
+/* Estilos personalizados para reproductores de audio */
+audio {
+    outline: none;
+    filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+    border-radius: 0.5rem;
+    background: #f9fafb;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+audio::-webkit-media-controls-play-button {
+    background-color: #f59e0b;
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-timeline {
+    background-color: #e5e7eb;
+    border-radius: 0.25rem;
+    margin: 0 8px;
+}
+
+audio:hover {
+    filter: sepia(0%) saturate(100%) grayscale(0) contrast(100%) invert(0%);
+}
+
+/* Hover effects para botones */
+.audio-preview:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Indicadores de carga */
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #f59e0b;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilos para botones de descarga y vista previa */
+.btn-download {
+    @apply inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium rounded-lg hover: from-amber-600 hover:to-orange-600 transition-all duration-200 transform hover:scale-105;
+}
+
+.btn-preview {
+    @apply inline-flex items-center px-3 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover: bg-blue-600 transition-all duration-200 transform hover:scale-105;
+}
