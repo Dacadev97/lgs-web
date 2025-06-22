@@ -18,3 +18,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php
+
+    <FilesMatch "\.js$">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
