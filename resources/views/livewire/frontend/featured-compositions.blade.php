@@ -157,12 +157,12 @@
                 <audio x-ref="audio" class="hidden" :src="'/storage/' + compositions[current].mp3" preload="metadata"></audio>
             </div>
             {{-- Lista de composiciones --}}
-            <div class="w-full md:w-64">
-                <ul class="space-y-2">
+ <div class="w-full md:w-64">
+                <ul class="space-y-2 max-h-72 overflow-y-auto"> {{-- max-h-72 ≈ 5 items, ajusta si lo necesitas --}}
                     <template x-for="(comp, idx) in compositions" :key="comp.id">
                         <li>
                             <button
-                                @click="select(idx)"
+                                @click="select(idx); play()" {{-- Reproduce automáticamente al seleccionar --}}
                                 :class="{
                                     'bg-amber-100 border-amber-400 text-amber-900': idx === current,
                                     'bg-white border-transparent text-gray-700 hover:bg-amber-50': idx !== current
