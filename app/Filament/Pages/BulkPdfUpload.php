@@ -42,16 +42,16 @@ class BulkPdfUpload extends Page implements HasForms
         $data = $this->form->getState();
         $category = Category::where('name', 'Other')->first();
 
-        foreach ($data['pdfs'] ?? [] as $pdf) {
-            $filename = $pdf->getClientOriginalName();
+        foreach ($data['pdfs'] ?? [] as $pdfPath) {
+            // Obtener el nombre del archivo de la ruta
+            $filename = basename($pdfPath);
             $title = pathinfo($filename, PATHINFO_FILENAME);
-            $pdfPath = $pdf->store('compositions/pdf', 'public');
 
             Composition::create([
                 'title' => $title,
                 'category_id' => $category ? $category->id : null,
                 'format' => 'PDF',
-                'pdf' => $pdfPath,
+                'pdf' => $pdfPath, // Ya tenemos la ruta del archivo
                 'mp3' => null,
             ]);
         }
