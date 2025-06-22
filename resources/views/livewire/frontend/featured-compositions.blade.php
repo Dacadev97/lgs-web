@@ -157,17 +157,17 @@
                 <audio x-ref="audio" class="hidden" :src="'/storage/' + compositions[current].mp3" preload="metadata"></audio>
             </div>
             {{-- Lista de composiciones --}}
- <div class="w-full md:w-64">
-    <ul class="space-y-2 overflow-y-auto" style="max-height: 220px;"> {{-- 5 x 44px = 220px --}}
+<div class="w-full md:w-64">
+    <ul class="overflow-y-auto" style="max-height: 220px;"> {{-- 5 x 44px = 220px --}}
         <template x-for="(comp, idx) in compositions" :key="comp.id">
-            <li>
+            <li class="h-11"> {{-- h-11 ≈ 44px --}}
                 <button
                     @click="select(idx); play()"
                     :class="{
                         'bg-amber-100 border-amber-400 text-amber-900': idx === current,
                         'bg-white border-transparent text-gray-700 hover:bg-amber-50': idx !== current
                     }"
-                    class="w-full text-left px-4 py-2 rounded border transition font-medium h-11" {{-- h-11 ≈ 44px --}}
+                    class="w-full text-left px-4 py-2 rounded border transition font-medium h-full flex items-center"
                 >
                     <span x-text="comp.title"></span>
                     <span class="ml-2 text-xs text-amber-700" x-text="comp.genre"></span>
