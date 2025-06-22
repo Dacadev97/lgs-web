@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class CompositionResource extends Resource
 {
@@ -84,7 +85,12 @@ class CompositionResource extends Resource
                     ->trueColor('success')
                     ->falseColor('danger')
                     ->getStateUsing(fn($record) => !empty($record->pdf))
-                    ->alignCenter(),
+                    ->alignCenter()
+                    ->action(
+                        fn($record) => !empty($record->pdf)
+                            ? redirect(\Illuminate\Support\Facades\Storage::url($record->pdf))
+                            : null
+                    ),
 
                 Tables\Columns\IconColumn::make('has_mp3')
                     ->label('MP3')
