@@ -156,27 +156,29 @@
                 {{-- Audio oculto --}}
                 <audio x-ref="audio" class="hidden" :src="'/storage/' + compositions[current].mp3" preload="metadata"></audio>
             </div>
-            {{-- Lista de composiciones --}}
-<div class="w-full md:w-64" style="max-height: 220px; height: 220px;">
-    <ul class="h-full overflow-y-auto" style="padding: 0; margin: 0;">
-        <template x-for="(comp, idx) in compositions" :key="comp.id">
-            <li style="height:44px; padding:0; margin:0;" :class="{'border-b border-amber-100': idx !== compositions.length - 1}">
-                <button
-                    @click="select(idx); play()"
-                    :class="{
-                        'bg-amber-100 border-amber-400 text-amber-900': idx === current,
-                        'bg-white border-transparent text-gray-700 hover:bg-amber-50': idx !== current
-                    }"
-                    class="w-full text-left px-4 rounded transition font-medium h-full flex items-center border-0"
-                    style="height: 44px; min-height: 44px; max-height: 44px; padding-top:0; padding-bottom:0;"
-                >
-                    <span x-text="comp.title"></span>
-                    <span class="ml-2 text-xs text-amber-700" x-text="comp.genre"></span>
-                </button>
-            </li>
-        </template>
-    </ul>
-</div>
+            {{-- Lista de composiciones comprimida con scroll interno --}}
+            <div class="w-full md:w-64 flex-shrink-0">
+                <div style="height:220px; max-height:220px;">
+                    <ul class="h-full overflow-y-auto" style="padding:0; margin:0;">
+                        <template x-for="(comp, idx) in compositions" :key="comp.id">
+                            <li style="height:44px; padding:0; margin:0;" :class="{'border-b border-amber-100': idx !== compositions.length - 1}">
+                                <button
+                                    @click="select(idx); play()"
+                                    :class="{
+                                        'bg-amber-100 border-amber-400 text-amber-900': idx === current,
+                                        'bg-white border-transparent text-gray-700 hover:bg-amber-50': idx !== current
+                                    }"
+                                    class="w-full text-left px-4 rounded transition font-medium h-full flex items-center border-0"
+                                    style="height:44px; min-height:44px; max-height:44px; padding-top:0; padding-bottom:0;"
+                                >
+                                    <span x-text="comp.title"></span>
+                                    <span class="ml-2 text-xs text-amber-700" x-text="comp.genre"></span>
+                                </button>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>
