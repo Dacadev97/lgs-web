@@ -25,7 +25,7 @@ class GalleryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->label('Title')
-                    ->required()
+                    ->required(false)
                     ->maxLength(255),
 
                 Forms\Components\Textarea::make('description')
@@ -62,28 +62,28 @@ class GalleryResource extends Resource
                     ->height(80)
                     ->width(80)
                     ->square(),
-                
+
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->searchable()
                     ->sortable()
                     ->placeholder('Untitled'),
-                
+
                 Tables\Columns\TextColumn::make('description')
                     ->label('Description')
                     ->limit(50)
                     ->placeholder('No description'),
-                
+
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Active')
                     ->boolean(),
-                
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Created')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Updated')
                     ->dateTime()
@@ -104,14 +104,14 @@ class GalleryResource extends Resource
             ])
             ->defaultSort('created_at', 'desc');
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [

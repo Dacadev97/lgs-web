@@ -37,7 +37,7 @@ class CompositionResource extends Resource
 
                 Forms\Components\FileUpload::make('mp3')
                     ->label('MP3 File')
-                    ->required()
+                    ->required(false)
                     ->directory('compositions/mp3')
                     ->disk('public')
                     ->acceptedFileTypes(['audio/mpeg']),
@@ -63,19 +63,19 @@ class CompositionResource extends Resource
                     ->label('Title')
                     ->searchable()
                     ->sortable(),
-                
+
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Category')
                     ->badge()
                     ->color('primary')
                     ->sortable()
                     ->searchable(),
-                
+
                 Tables\Columns\TextColumn::make('format')
                     ->label('Format')
                     ->placeholder('N/A')
                     ->sortable(),
-                
+
                 Tables\Columns\IconColumn::make('has_pdf')
                     ->label('PDF')
                     ->boolean()
@@ -83,9 +83,9 @@ class CompositionResource extends Resource
                     ->falseIcon('heroicon-o-x-circle')
                     ->trueColor('success')
                     ->falseColor('danger')
-                    ->getStateUsing(fn ($record) => !empty($record->pdf))
+                    ->getStateUsing(fn($record) => !empty($record->pdf))
                     ->alignCenter(),
-                
+
                 Tables\Columns\IconColumn::make('has_mp3')
                     ->label('MP3')
                     ->boolean()
@@ -93,9 +93,9 @@ class CompositionResource extends Resource
                     ->falseIcon('heroicon-o-x-circle')
                     ->trueColor('success')
                     ->falseColor('danger')
-                    ->getStateUsing(fn ($record) => !empty($record->mp3))
+                    ->getStateUsing(fn($record) => !empty($record->mp3))
                     ->alignCenter(),
-                
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Created')
                     ->dateTime()
