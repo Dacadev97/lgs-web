@@ -157,8 +157,8 @@
                 <audio x-ref="audio" class="hidden" :src="'/storage/' + compositions[current].mp3" preload="metadata"></audio>
             </div>
             {{-- Lista de composiciones --}}
-<div class="w-full md:w-64">
-    <ul class="overflow-y-auto" style="max-height: 220px; padding: 0; margin: 0;">
+<div class="w-full md:w-64" style="max-height: 220px; height: 220px;">
+    <ul class="h-full overflow-y-auto" style="padding: 0; margin: 0;">
         <template x-for="(comp, idx) in compositions" :key="comp.id">
             <li style="height:44px; padding:0; margin:0;" :class="{'border-b border-amber-100': idx !== compositions.length - 1}">
                 <button
