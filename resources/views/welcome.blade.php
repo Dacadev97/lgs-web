@@ -9,15 +9,18 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif; }
-    </style>
- 
-
+    
     @livewireStyles
-         <style>
-    [x-cloak] { display: none !important; }
-</style>
+    
+    <style>
+        body { 
+            font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif; 
+        }
+        [x-cloak] { 
+            display: none !important; 
+        }
+    </style>
+
     @php
         $manifestPath = public_path('build/manifest.json');
         $useVite = !file_exists($manifestPath) || app()->environment('local');
@@ -44,7 +47,6 @@
             <script src="{{ asset('build/assets/app-f68654ee.js') }}" defer></script>
         @endif
     @endif
-
 </head>
 <body class="font-sans">
     @livewire('frontend.navbar')
@@ -55,6 +57,6 @@
     @livewire('frontend.floating-latest-composition')
 
     @livewireScripts
-            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
