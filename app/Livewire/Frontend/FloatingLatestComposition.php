@@ -5,26 +5,24 @@ namespace App\Livewire\Frontend;
 
 use Livewire\Component;
 use App\Models\Composition;
-use App\Models\FloatingComposition;
 
 class FloatingLatestComposition extends Component
 {
     public $latestComposition;
-    public $show = false;
+    public $isVisible = true;
 
     public function mount()
     {
         $this->latestComposition = Composition::latest()->first();
-        $this->show = true;
+    }
+
+    public function close()
+    {
+        $this->isVisible = false;
     }
 
     public function render()
     {
         return view('livewire.frontend.floating-latest-composition');
-    }
-
-    public function close()
-    {
-        $this->show = false;
     }
 }

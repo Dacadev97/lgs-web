@@ -1,6 +1,6 @@
-
+@if($latestComposition && $isVisible)
 <div
-    x-data="{ show: @entangle('show') }"
+    x-data="{ show: true }"
     x-show="show"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform translate-y-2"
@@ -9,10 +9,10 @@
     x-transition:leave-start="opacity-100 transform translate-y-0"
     x-transition:leave-end="opacity-0 transform translate-y-2"
     class="fixed bottom-4 right-4 z-[9999] w-72 bg-white rounded-lg shadow-xl border border-amber-100 overflow-hidden hover:shadow-2xl"
-    style="display: none;"
 >
     <div class="p-4">
         <button 
+            @click="show = false"
             wire:click="close"
             class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
         >
@@ -50,3 +50,4 @@
         </div>
     </div>
 </div>
+@endif
