@@ -12,12 +12,12 @@
     <style>
         body { font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif; }
     </style>
-         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-     <style>
+ 
+
+    @livewireStyles
+         <style>
     [x-cloak] { display: none !important; }
 </style>
-    @livewireStyles
-    
     @php
         $manifestPath = public_path('build/manifest.json');
         $useVite = !file_exists($manifestPath) || app()->environment('local');
@@ -55,5 +55,6 @@
     @livewire('frontend.floating-latest-composition')
 
     @livewireScripts
+            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>

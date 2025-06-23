@@ -9,8 +9,7 @@ use App\Models\Composition;
 class FloatingLatestComposition extends Component
 {
     public $latestComposition;
-    public $isVisible = true;
-    public $showComponent = true;
+    public $visible = true;
 
     public function mount()
     {
@@ -19,7 +18,7 @@ class FloatingLatestComposition extends Component
 
     public function close()
     {
-        $this->showComponent = false;
+        $this->visible = false;
     }
 
     public function render()
