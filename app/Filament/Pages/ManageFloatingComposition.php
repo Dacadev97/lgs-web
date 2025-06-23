@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Filament\Pages;
 
 use App\Models\FloatingComposition;
@@ -18,6 +19,7 @@ class ManageFloatingComposition extends Page implements HasForms
     protected static ?string $navigationLabel = 'Floating Composition';
     protected static ?string $title = 'Floating Composition Settings';
     protected static ?string $slug = 'floating-composition-settings';
+    protected static string $view = 'filament.pages.manage-floating-composition';
 
     public ?array $data = [];
 
