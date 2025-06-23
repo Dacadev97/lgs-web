@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Livewire\Frontend;
 
 use Livewire\Component;
@@ -14,7 +15,6 @@ class FloatingLatestComposition extends Component
     public function mount()
     {
         $settings = FloatingComposition::first();
-
         if ($settings && $settings->is_active) {
             $this->latestComposition = Composition::latest()->first();
             $this->show = true;
