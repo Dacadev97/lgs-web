@@ -47,6 +47,7 @@
     @livewire('frontend.featured-compositions')
     @livewire('frontend.categories')
     @livewire('frontend.footer')
+    @livewire('frontend.floating-latest-composition')
 
     @livewireScripts
 </body>
