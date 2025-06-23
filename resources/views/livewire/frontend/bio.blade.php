@@ -26,7 +26,7 @@
                         <!-- Artist Info -->
                         <div class="lg:col-span-3 space-y-6">
                             <div>
-                                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{{ __('Maestro Guitar') }}</h2>
+                                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{{ __('Jaime Romero') }}</h2>
                                 <p class="text-xl text-amber-600 font-semibold mb-6">
                                     {{ __('Classical and Latin Guitar Virtuoso') }}
                                 </p>
@@ -82,7 +82,7 @@
                 </blockquote>
                 
                 <footer class="border-t border-gray-200 pt-6">
-                    <cite class="text-lg font-semibold text-amber-600">{{ __('Maestro Guitar') }}</cite>
+                    <cite class="text-lg font-semibold text-amber-600">{{ __('Jaime Romero') }}</cite>
                 </footer>
             </div>
         </div>
