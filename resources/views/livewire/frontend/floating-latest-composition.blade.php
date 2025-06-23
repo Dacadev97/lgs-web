@@ -1,8 +1,21 @@
 
-@if($show && $latestComposition)
-<div class="fixed bottom-4 right-4 z-50 w-72 bg-white rounded-lg shadow-xl border border-amber-100 overflow-hidden transition-all duration-300 hover:shadow-2xl">
+<div
+    x-data="{ show: @entangle('show') }"
+    x-show="show"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 transform translate-y-2"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform translate-y-2"
+    class="fixed bottom-4 right-4 z-[9999] w-72 bg-white rounded-lg shadow-xl border border-amber-100 overflow-hidden hover:shadow-2xl"
+    style="display: none;"
+>
     <div class="p-4">
-        <button onclick="this.closest('div.fixed').remove()" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
+        <button 
+            wire:click="close"
+            class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+        >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -17,20 +30,23 @@
         </div>
         
         <div class="flex justify-end gap-2">
-            @if($latestComposition->hasPdf())
-                <a href="{{ route('preview.pdf', $latestComposition->id) }}" 
-                   target="_blank"
-                   class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm hover:bg-amber-200 transition-colors">
+            @if($latestComposition->pdf)
+                <a 
+                    href="{{ route('preview.pdf', $latestComposition->id) }}" 
+                    target="_blank"
+                    class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm hover:bg-amber-200 transition-colors"
+                >
                     Preview PDF
                 </a>
             @endif
             @if($latestComposition->hasFiles())
-                <a href="{{ route('download.package', $latestComposition->id) }}" 
-                   class="px-3 py-1 bg-amber-500 text-white rounded-full text-sm hover:bg-amber-600 transition-colors">
+                <a 
+                    href="{{ route('download.package', $latestComposition->id) }}" 
+                    class="px-3 py-1 bg-amber-500 text-white rounded-full text-sm hover:bg-amber-600 transition-colors"
+                >
                     Download
                 </a>
             @endif
         </div>
     </div>
 </div>
-@endif

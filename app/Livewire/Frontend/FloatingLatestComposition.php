@@ -14,15 +14,17 @@ class FloatingLatestComposition extends Component
 
     public function mount()
     {
-        $settings = FloatingComposition::first();
-        if ($settings && $settings->is_active) {
-            $this->latestComposition = Composition::latest()->first();
-            $this->show = true;
-        }
+        $this->latestComposition = Composition::latest()->first();
+        $this->show = true;
     }
 
     public function render()
     {
         return view('livewire.frontend.floating-latest-composition');
+    }
+
+    public function close()
+    {
+        $this->show = false;
     }
 }
