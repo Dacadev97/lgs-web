@@ -12,6 +12,10 @@
     <style>
         body { font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif; }
     </style>
+         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+     <style>
+    [x-cloak] { display: none !important; }
+</style>
     @livewireStyles
     
     @php
@@ -40,7 +44,7 @@
             <script src="{{ asset('build/assets/app-f68654ee.js') }}" defer></script>
         @endif
     @endif
-     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <body class="font-sans">
     @livewire('frontend.navbar')

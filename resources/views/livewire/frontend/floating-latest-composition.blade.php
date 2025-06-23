@@ -1,6 +1,8 @@
-@if($latestComposition && $isVisible)
+@if($latestComposition && $showComponent)
 <div
-    x-data="{ show: true }"
+    wire:init="$set('isVisible', true)"
+    x-data="{ show: @entangle('isVisible').defer }"
+    x-cloak
     x-show="show"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform translate-y-2"
@@ -21,33 +23,7 @@
             </svg>
         </button>
         
-        <h3 class="font-semibold text-gray-900 mb-2">Latest Composition</h3>
-        <div class="mb-3">
-            <h4 class="text-lg font-medium text-amber-600">{{ $latestComposition->title }}</h4>
-            @if($latestComposition->category)
-                <span class="text-sm text-gray-500">{{ $latestComposition->category->name }}</span>
-            @endif
-        </div>
-        
-        <div class="flex justify-end gap-2">
-            @if($latestComposition->pdf)
-                <a 
-                    href="{{ route('preview.pdf', $latestComposition->id) }}" 
-                    target="_blank"
-                    class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm hover:bg-amber-200 transition-colors"
-                >
-                    Preview PDF
-                </a>
-            @endif
-            @if($latestComposition->hasFiles())
-                <a 
-                    href="{{ route('download.package', $latestComposition->id) }}" 
-                    class="px-3 py-1 bg-amber-500 text-white rounded-full text-sm hover:bg-amber-600 transition-colors"
-                >
-                    Download
-                </a>
-            @endif
-        </div>
+        <!-- ...resto del código... -->
     </div>
 </div>
 @endif

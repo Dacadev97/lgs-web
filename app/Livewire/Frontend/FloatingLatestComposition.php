@@ -10,6 +10,7 @@ class FloatingLatestComposition extends Component
 {
     public $latestComposition;
     public $isVisible = true;
+    public $showComponent = true;
 
     public function mount()
     {
@@ -18,7 +19,7 @@ class FloatingLatestComposition extends Component
 
     public function close()
     {
-        $this->isVisible = false;
+        $this->showComponent = false;
     }
 
     public function render()
