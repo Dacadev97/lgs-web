@@ -9,7 +9,8 @@
             x-transition:leave="transition ease-in duration-200"
             x-transition:leave-start="opacity-100 translate-y-0"
             x-transition:leave-end="opacity-0 translate-y-4"
-            class="fixed bottom-4 right-4 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
+            class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
+            style="margin: 0 !important; pointer-events: auto !important;"
         >
             {{-- Banner de New Release --}}
             <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1">
