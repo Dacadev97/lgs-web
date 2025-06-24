@@ -19,7 +19,7 @@
                     wire:click="close"
                     class="p-1 text-white hover:bg-white/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
                 >
-                    X
+                    Ⓧ
                 </button>
             </div>
 
