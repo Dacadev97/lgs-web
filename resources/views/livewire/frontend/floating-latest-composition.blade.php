@@ -1,15 +1,8 @@
 <div>
     @if($latestComposition && $visible)
         <div
-            x-data="{ show: true }"
-            x-show="show"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 translate-y-4"
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 translate-y-4"
-            class="fixed bottom-16 right-4 md:bottom-32 md:right-8 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
+
+            class="fixed bottom-32 right-4 md:bottom-32 md:right-8 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
         >
             {{-- Banner de New Release con botón de cerrar --}}
             <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1.5 flex items-center justify-between">
