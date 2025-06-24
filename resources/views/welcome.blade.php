@@ -49,11 +49,11 @@
     @endif
 </head>
 <body class="font-sans">
-    @livewire('frontend.floating-latest-composition')
     @livewire('frontend.navbar')
     @livewire('frontend.hero')
     @livewire('frontend.featured-compositions')
     @livewire('frontend.categories')
+    @livewire('frontend.floating-latest-composition')
     @livewire('frontend.footer')
    
 
