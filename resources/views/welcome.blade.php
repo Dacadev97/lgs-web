@@ -12,12 +12,22 @@
     
     @livewireStyles
     
-    <style>
+ <style>
         body { 
             font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif; 
         }
         [x-cloak] { 
             display: none !important; 
+        }
+        .floating-wrapper {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .floating-wrapper > * {
+            pointer-events: auto;
         }
     </style>
 
@@ -49,7 +59,7 @@
     @endif
 </head>
 <body class="font-sans relative">
-    {{-- Componentes principales --}}
+
     <div class="relative z-0">
         @livewire('frontend.navbar')
         @livewire('frontend.hero')
@@ -58,7 +68,7 @@
         @livewire('frontend.footer')
     </div>
 
-    {{-- Componente flotante con z-index mayor --}}
+
     <div class="relative z-50">
         @livewire('frontend.floating-latest-composition')
     </div>
