@@ -59,6 +59,10 @@
     @endif
 </head>
 <body class="font-sans">
+
+        <div class="floating-wrapper">
+        @livewire('frontend.floating-latest-composition')
+    </div>
     {{-- Contenido principal --}}
     <main>
         @livewire('frontend.navbar')
@@ -69,9 +73,7 @@
     </main>
 
     {{-- Componente flotante --}}
-    <div class="floating-wrapper">
-        @livewire('frontend.floating-latest-composition')
-    </div>
+
 
     {{-- Scripts --}}
     @livewireScripts
