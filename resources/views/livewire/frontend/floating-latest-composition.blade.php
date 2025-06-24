@@ -9,25 +9,27 @@
             x-transition:leave="transition ease-in duration-200"
             x-transition:leave-start="opacity-100 translate-y-0"
             x-transition:leave-end="opacity-0 translate-y-4"
-            class="fixed bottom-[60%] right-12 md:bottom-[70%] md:right-10 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
+            class="fixed bottom-20 right-4 md:bottom-32 md:right-8 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
         >
-            {{-- Banner de New Release con botón de cerrar --}}
-            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1.5 flex items-center justify-between">
-                <span class="text-xs font-bold">New Release</span>
+            {{-- Banner de New Release --}}
+            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1">
+                New Release
+            </div>
+
+            <div class="relative p-4">
+                {{-- Botón cerrar --}}
                 <button 
                     @click="show = false"
                     wire:click="close"
-                    class="text-white/80 hover:text-white transition-colors focus:outline-none"
+                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-full p-1 opacity-0 group-hover:opacity-100"
                 >
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-            </div>
 
-            <div class="p-4 space-y-3">
-                {{-- Título y Categoría --}}
-                <div>
+                {{-- Contenido --}}
+                <div class="mb-3">
                     <h4 class="text-lg font-medium text-amber-600 truncate hover:text-amber-700 transition-colors cursor-pointer">
                         {{ $latestComposition->title }}
                     </h4>
@@ -35,20 +37,6 @@
                         <span class="text-sm text-gray-500">{{ $latestComposition->category->name }}</span>
                     @endif
                 </div>
-
-                {{-- Reproductor de Audio --}}
-                @if($latestComposition->hasAudio())
-                    <div class="bg-gray-50 rounded-lg p-2">
-                        <audio 
-                            controls 
-                            class="w-full h-8"
-                            preload="metadata"
-                        >
-                            <source src="{{ $latestComposition->getAudioUrl() }}" type="audio/mpeg">
-                            Tu navegador no soporta el elemento de audio.
-                        </audio>
-                    </div>
-                @endif
 
                 {{-- Acciones --}}
                 <div class="flex justify-end gap-2">
