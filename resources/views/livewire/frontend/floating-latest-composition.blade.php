@@ -32,19 +32,19 @@
                         {{ $latestComposition->title }}
                     </h4>
                     @if($latestComposition->category)
-                        <span class="inline-block text-sm text-gray-500">{{ $latestComposition->category->name }}</span>
+                        <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full mb-2 self-start">{{ $latestComposition->category->name }}</span>
                     @endif
                 </div>
 
                 {{-- Reproductor de Audio --}}
-                @if($latestComposition->audio_url)
+                @if($latestComposition->mp3)
                     <div class="bg-gray-50/80 rounded-lg p-2">
                         <audio 
                             controls 
                             class="w-full h-8"
                             preload="metadata"
                         >
-                            <source src="{{ $latestComposition->audio_url }}" type="audio/mpeg">
+                            <source src="{{ $latestComposition->mp3 }}" type="audio/mpeg">
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
@@ -56,7 +56,7 @@
                         <a 
                             href="{{ route('preview.pdf', $latestComposition->id) }}" 
                             target="_blank"
-                            class="inline-flex items-center px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-medium hover:bg-amber-200 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 gap-1 no-underline"
+                            class="inline-flex items-center px-3 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-all duration-200 transform hover:scale-105"
                         >
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -68,7 +68,7 @@
                     @if($latestComposition->hasFiles())
                         <a 
                             href="{{ route('download.package', $latestComposition->id) }}" 
-                            class="inline-flex items-center px-3 py-1 bg-amber-500 text-white rounded-full text-xs font-medium hover:bg-amber-600 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 gap-1 no-underline"
+                            class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200 transform hover:scale-105"
                         >
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
