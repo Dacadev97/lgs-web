@@ -12,22 +12,26 @@
     
     @livewireStyles
     
- <style>
+<style>
         body { 
             font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif; 
+            position: relative;
+            min-height: 100vh;
         }
         [x-cloak] { 
             display: none !important; 
         }
-        .floating-wrapper {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            z-index: 9999;
-            pointer-events: none;
+        #floating-container {
+            position: fixed !important;
+            bottom: 1rem !important;
+            right: 1rem !important;
+            z-index: 99999 !important;
+            pointer-events: none !important;
+            width: auto !important;
+            height: auto !important;
         }
-        .floating-wrapper > * {
-            pointer-events: auto;
+        #floating-container > * {
+            pointer-events: auto !important;
         }
     </style>
 
@@ -59,12 +63,8 @@
     @endif
 </head>
 <body class="font-sans">
-
-        <div class="floating-wrapper">
-        @livewire('frontend.floating-latest-composition')
-    </div>
     {{-- Contenido principal --}}
-    <main>
+    <main class="relative z-0">
         @livewire('frontend.navbar')
         @livewire('frontend.hero')
         @livewire('frontend.featured-compositions')
@@ -72,11 +72,21 @@
         @livewire('frontend.footer')
     </main>
 
-    {{-- Componente flotante --}}
+    {{-- Componente flotante fuera del flujo principal --}}
+    <div id="floating-container">
+        @livewire('frontend.floating-latest-composition')
+    </div>
 
-
-    {{-- Scripts --}}
+    {{-- Scripts al final del body --}}
     @livewireScripts
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {{-- Script para verificar que el componente flotante exista --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Floating container:', document.getElementById('floating-container'));
+            console.log('Floating content:', document.querySelector('#floating-container > div'));
+        });
+    </script>
 </body>
 </html>
