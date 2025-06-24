@@ -1,16 +1,11 @@
+{{-- filepath: c:\Users\dacad\OneDrive\Escritorio\lgs-web\resources\views\livewire\frontend\floating-latest-composition.blade.php --}}
 <div>
     @if($latestComposition && $visible)
         <div
             x-data="{ show: true }"
             x-show="show"
-            x-cloak
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform translate-y-2"
-            x-transition:enter-end="opacity-100 transform translate-y-0"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100 transform translate-y-0"
-            x-transition:leave-end="opacity-0 transform translate-y-2"
             class="fixed bottom-4 right-4 z-[9999] w-72 bg-white rounded-lg shadow-xl border border-amber-100 overflow-hidden hover:shadow-2xl"
+            style="display: none;"
         >
             <div class="p-4">
                 <button 
@@ -32,7 +27,7 @@
                 </div>
                 
                 <div class="flex justify-end gap-2">
-                    @if($latestComposition->pdf)
+                    @if($latestComposition->hasPdf())
                         <a 
                             href="{{ route('preview.pdf', $latestComposition->id) }}" 
                             target="_blank"
