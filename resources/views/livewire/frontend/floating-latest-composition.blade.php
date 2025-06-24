@@ -11,9 +11,10 @@
             x-transition:leave-end="opacity-0 translate-y-4"
             class="fixed bottom-4 right-4 z-[999999] w-72 bg-gradient-to-br from-white to-amber-50 rounded-lg shadow-xl border border-amber-200 overflow-hidden hover:shadow-2xl transform-gpu transition-all duration-300 ease-in-out group"
         >
-            {{-- Banner de Premiere --}}
+            {{-- Banner de New Release --}}
             <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1">
-                New Release            </div>
+                New Release
+            </div>
 
             <div class="relative p-4">
                 {{-- Botón cerrar --}}
