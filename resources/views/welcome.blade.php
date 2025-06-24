@@ -81,12 +81,5 @@
     @livewireScripts
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    {{-- Script para verificar que el componente flotante exista --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Floating container:', document.getElementById('floating-container'));
-            console.log('Floating content:', document.querySelector('#floating-container > div'));
-        });
-    </script>
 </body>
 </html>
