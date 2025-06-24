@@ -49,12 +49,13 @@
     @endif
 </head>
 <body class="font-sans">
+    @livewire('frontend.floating-latest-composition')
     @livewire('frontend.navbar')
     @livewire('frontend.hero')
     @livewire('frontend.featured-compositions')
     @livewire('frontend.categories')
     @livewire('frontend.footer')
-    @livewire('frontend.floating-latest-composition')
+   
 
     @livewireScripts
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
