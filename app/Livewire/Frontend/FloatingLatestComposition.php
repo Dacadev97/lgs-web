@@ -5,6 +5,7 @@ namespace App\Livewire\Frontend;
 
 use Livewire\Component;
 use App\Models\Composition;
+use Illuminate\Support\Facades\Log;
 
 class FloatingLatestComposition extends Component
 {
@@ -14,6 +15,7 @@ class FloatingLatestComposition extends Component
     public function mount()
     {
         $this->latestComposition = Composition::latest()->first();
+        Log::info('Composition loaded:', ['composition' => $this->latestComposition]); // Debug
     }
 
     public function close()
