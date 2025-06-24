@@ -48,15 +48,22 @@
         @endif
     @endif
 </head>
-<body class="font-sans">
-    @livewire('frontend.navbar')
-    @livewire('frontend.hero')
-    @livewire('frontend.featured-compositions')
-    @livewire('frontend.categories')
-    @livewire('frontend.floating-latest-composition')
-    @livewire('frontend.footer')
-   
+<body class="font-sans relative">
+    {{-- Componentes principales --}}
+    <div class="relative z-0">
+        @livewire('frontend.navbar')
+        @livewire('frontend.hero')
+        @livewire('frontend.featured-compositions')
+        @livewire('frontend.categories')
+        @livewire('frontend.footer')
+    </div>
 
+    {{-- Componente flotante con z-index mayor --}}
+    <div class="relative z-50">
+        @livewire('frontend.floating-latest-composition')
+    </div>
+
+    {{-- Scripts --}}
     @livewireScripts
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
