@@ -34,7 +34,7 @@
                         {{ $latestComposition->title }}
                     </h4>
                     @if($latestComposition->category)
-                        <span class="text-sm text-gray-500">{{ $latestComposition->category->name }}</span>
+                        <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full mb-2 self-start">{{ $latestComposition->category->name }}</span>
                     @endif
                 </div>
 
