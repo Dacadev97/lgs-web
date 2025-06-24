@@ -58,18 +58,18 @@
         @endif
     @endif
 </head>
-<body class="font-sans relative">
-
-    <div class="relative z-0">
+<body class="font-sans">
+    {{-- Contenido principal --}}
+    <main>
         @livewire('frontend.navbar')
         @livewire('frontend.hero')
         @livewire('frontend.featured-compositions')
         @livewire('frontend.categories')
         @livewire('frontend.footer')
-    </div>
+    </main>
 
-
-    <div class="relative z-50">
+    {{-- Componente flotante --}}
+    <div class="floating-wrapper">
         @livewire('frontend.floating-latest-composition')
     </div>
 
