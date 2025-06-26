@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Filament\Resources\BioSettingsResource\Pages;
 
 use App\Filament\Resources\BioSettingsResource;
@@ -30,9 +31,6 @@ class EditBioSettings extends EditRecord
             ]
         );
 
-        parent::mount($settings);
-
-        $this->record = $settings;
-        $this->form->fill($settings->toArray());
+        parent::mount($settings->getKey());
     }
 }
