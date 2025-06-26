@@ -118,6 +118,43 @@
                                                 <i class="fas fa-download mr-1"></i> 
                                                 <span>{{ $composition->downloads ?? 0 }}</span>
                                             </div>
+                                             <div x-data="{ 
+            showTooltip: false,
+            copyLink() {
+                const baseUrl = 'https://www.latinguitarscores.com/compositions';
+                const searchParam = encodeURIComponent(this.compositionTitle);
+                const url = `${baseUrl}?search=${searchParam}`;
+                navigator.clipboard.writeText(url);
+                this.showTooltip = true;
+                setTimeout(() => this.showTooltip = false, 2000);
+            }
+        }" 
+        x-init="compositionTitle = '{{ $composition->title }}'"
+        class="relative">
+            <button 
+                @click="copyLink()"
+                class="inline-flex items-center p-1.5 text-gray-500 hover:text-amber-600 transition-colors rounded-full hover:bg-amber-50"
+                title="{{ __('Share') }}"
+            >
+                <i class="fas fa-share-alt"></i>
+            </button>
+            
+            {{-- Tooltip de confirmación --}}
+            <div 
+                x-show="showTooltip"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 translate-y-1"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 translate-y-1"
+                class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded whitespace-nowrap"
+                style="display: none;"
+            >
+                {{ __('Link copied!') }}
+            </div>
+        </div>
+    </div>
                                             
                                             <div class="flex gap-2">
                                                 @if($composition->hasPdf())
