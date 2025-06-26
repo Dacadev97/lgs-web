@@ -68,6 +68,7 @@
                             <!-- Search -->
                             <div class="flex flex-col sm:flex-row gap-3">
                                 <input type="text" wire:model.live="search" 
+                                        value="{{ request()->query('search', '') }}"
                                        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200" 
                                        placeholder="{{ __('Search compositions...') }}">
                                 <select wire:model.live="sortBy" 

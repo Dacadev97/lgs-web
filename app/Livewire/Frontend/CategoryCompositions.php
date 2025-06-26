@@ -27,7 +27,7 @@ class CategoryCompositions extends Component
 
         // Buscar categoría por ID o por nombre
         $categoryModel = null;
-        
+
         // Si es numérico, buscar por ID
         if (is_numeric($category)) {
             $categoryModel = Category::where('id', $category)
@@ -39,7 +39,7 @@ class CategoryCompositions extends Component
                 ->where('is_active', true)
                 ->first();
         }
-        
+
         if ($categoryModel) {
             $this->selectedCategory = $categoryModel->id;
             $this->invalidCategory = false;
@@ -47,6 +47,8 @@ class CategoryCompositions extends Component
             $this->selectedCategory = null;
             $this->invalidCategory = true;
         }
+
+        $this->search = request()->query('search', '');
     }
 
     public function getCategoriesProperty()
@@ -74,8 +76,8 @@ class CategoryCompositions extends Component
         if ($this->search) {
             $query->where(function ($q) {
                 $q->where('title', 'like', '%' . $this->search . '%')
-                  ->orWhere('composer', 'like', '%' . $this->search . '%')
-                  ->orWhere('description', 'like', '%' . $this->search . '%');
+                    ->orWhere('composer', 'like', '%' . $this->search . '%')
+                    ->orWhere('description', 'like', '%' . $this->search . '%');
             });
         }
 
