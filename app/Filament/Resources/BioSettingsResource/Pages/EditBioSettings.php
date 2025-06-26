@@ -11,7 +11,7 @@ class EditBioSettings extends EditRecord
 {
     protected static string $resource = BioSettingsResource::class;
 
-    public function mount($record): void
+    protected function mutateFormDataBeforeFill(array $data): array
     {
         $settings = BioSettings::firstOrCreate(
             [],
@@ -31,6 +31,8 @@ class EditBioSettings extends EditRecord
             ]
         );
 
-        parent::mount($settings->getKey());
+        $this->record = $settings;
+
+        return $data;
     }
 }
