@@ -124,7 +124,6 @@
                                                     {{-- Share button --}}
                                                     <div x-data="{ 
                                                         showTooltip: false,
-                                                        compositionTitle: '{{ $composition->title }}',
                                                         copyLink() {
                                                             const baseUrl = 'https://www.latinguitarscores.com/compositions';
                                                             const searchParam = encodeURIComponent(this.compositionTitle);
@@ -134,6 +133,7 @@
                                                             setTimeout(() => this.showTooltip = false, 2000);
                                                         }
                                                     }" 
+                                                    x-init="compositionTitle = '{{ $composition->title }}'"
                                                     class="relative">
                                                         <button 
                                                             @click="copyLink()"
@@ -157,7 +157,8 @@
                                                         >
                                                             {{ __('Link copied!') }}
                                                         </div>
-                                                    
+                                                    </div>
+                                                </div>
 
                                                 <div class="flex gap-2">
                                                     @if($composition->hasPdf())
