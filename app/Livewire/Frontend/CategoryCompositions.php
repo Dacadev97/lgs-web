@@ -16,10 +16,17 @@ class CategoryCompositions extends Component
     public $sortBy = 'title';
     public $invalidCategory = false;
 
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'sortBy' => ['except' => 'title']
+    ];
+
     public function mount($category = null)
     {
         // Obtener el valor de search de la URL y asignarlo a la propiedad
-        $this->search = request()->query('search', '');
+        if (request()->has('search')) {
+            $this->search = request()->query('search');
+        }
 
         // Si no se proporciona categoría, mostrar todas
         if (!$category) {
