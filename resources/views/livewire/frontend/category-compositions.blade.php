@@ -157,7 +157,7 @@
                                                         >
                                                             {{ __('Link copied!') }}
                                                         </div>
-                                                    </div>
+                                                    
 
                                                 <div class="flex gap-2">
                                                     @if($composition->hasPdf())
