@@ -26,7 +26,6 @@ return new class extends Migration
             $table->text('philosophy_quote');
             $table->string('cta_title')->default('Explore the Musical Journey');
             $table->timestamps();
-            $table->timestamps();
         });
     }
 
