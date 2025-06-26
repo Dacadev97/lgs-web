@@ -18,6 +18,9 @@ class CategoryCompositions extends Component
 
     public function mount($category = null)
     {
+        // Obtener el valor de search de la URL y asignarlo a la propiedad
+        $this->search = request()->query('search', '');
+
         // Si no se proporciona categoría, mostrar todas
         if (!$category) {
             $this->selectedCategory = null;
@@ -47,8 +50,6 @@ class CategoryCompositions extends Component
             $this->selectedCategory = null;
             $this->invalidCategory = true;
         }
-
-        $this->search = request()->query('search', '');
     }
 
     public function getCategoriesProperty()
