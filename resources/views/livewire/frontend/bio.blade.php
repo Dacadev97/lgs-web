@@ -3,8 +3,8 @@
     <section class="pt-20 pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">{{ __('About the Artist') }}</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ __('Discover the story behind the music') }}</p>
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">{{ $settings->title }}</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ $settings->subtitle }}</p>
             </div>
             
             <!-- Artist Profile Card -->
@@ -26,34 +26,34 @@
                         <!-- Artist Info -->
                         <div class="lg:col-span-3 space-y-6">
                             <div>
-                                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{{ __('Jaime Romero') }}</h2>
+                                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{{ $settings->artist_name }}</h2>
                                 <p class="text-xl text-amber-600 font-semibold mb-6">
-                                    {{ __('Classical and Latin Guitar Virtuoso') }}
+                                    {{ $settings->artist_role }}
                                 </p>
                             </div>
                             
                             <div class="space-y-4 text-gray-700 leading-relaxed">
                                 <p class="text-lg">
-                                    {{ __('With over two decades of experience in classical and Latin guitar, our featured artist has dedicated their life to preserving and sharing the rich musical heritage of Latin America. Through careful study and interpretation of traditional compositions, as well as the creation of contemporary works, they continue to expand the repertoire of Latin guitar music.') }}
+                                    {{ $settings->description_1 }}
                                 </p>
                                 
                                 <p class="text-lg">
-                                    {{ __('Their performances have graced concert halls across the Americas and Europe, bringing the passionate and intricate melodies of Latin guitar to audiences worldwide. Each composition in this collection has been carefully selected and arranged to showcase the diverse styles and emotions that define Latin guitar music.') }}
+                                    {{ $settings->description_2 }}
                                 </p>
                             </div>
                             
                             <!-- Stats -->
                             <div class="grid grid-cols-3 gap-6 pt-6">
                                 <div class="text-center">
-                                    <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">20+</div>
+                                    <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">{{ $settings->years_experience }}</div>
                                     <div class="text-sm lg:text-base text-gray-600 font-medium">{{ __('Years Experience') }}</div>
                                 </div>
                                 <div class="text-center border-x border-gray-200">
-                                    <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">100+</div>
+                                    <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">{{ $settings->compositions_count }}</div>
                                     <div class="text-sm lg:text-base text-gray-600 font-medium">{{ __('Compositions') }}</div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">50+</div>
+                                    <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">{{ $settings->performances_count }}</div>
                                     <div class="text-sm lg:text-base text-gray-600 font-medium">{{ __('Performances') }}</div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
     <!-- Musical Philosophy Section -->
     <section class="py-16 bg-white/50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-12">{{ __('Musical Philosophy') }}</h3>
+            <h3 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-12">{{ $settings->philosophy_title }}</h3>
             
             <div class="bg-white rounded-2xl shadow-xl border border-amber-100 p-8 lg:p-12 relative">
                 <!-- Quote marks -->
@@ -78,11 +78,11 @@
                 </div>
                 
                 <blockquote class="text-xl lg:text-2xl text-gray-700 italic leading-relaxed mb-8">
-                    {{ __('Music is the universal language that transcends borders and cultures. Through the guitar, we can tell stories of love, passion, joy, and sorrow that resonate with the human soul regardless of where we come from.') }}
+                    {{ $settings->philosophy_quote }}
                 </blockquote>
                 
                 <footer class="border-t border-gray-200 pt-6">
-                    <cite class="text-lg font-semibold text-amber-600">{{ __('Jaime Romero') }}</cite>
+                    <cite class="text-lg font-semibold text-amber-600">{{ $settings->artist_name }}</cite>
                 </footer>
             </div>
         </div>
@@ -91,7 +91,7 @@
     <!-- Call to Action Section -->
     <section class="py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-8">{{ __('Explore the Musical Journey') }}</h3>
+            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-8">{{ $settings->cta_title }}</h3>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="{{ route('compositions.byCategory') }}" 
