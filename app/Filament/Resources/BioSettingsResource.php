@@ -12,8 +12,7 @@ class BioSettingsResource extends Resource
 {
     protected static ?string $model = BioSettings::class;
     protected static ?string $navigationIcon = 'heroicon-o-user';
-    protected static ?string $navigationGroup = 'Content';
-    protected static ?string $navigationLabel = 'Página de Biografía';
+    protected static ?string $navigationLabel = 'Bio Page';
     protected static ?string $modelLabel = 'Configuración de Biografía';
     protected static bool $shouldRegisterNavigation = true;
 
@@ -21,67 +20,67 @@ class BioSettingsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Sección Principal')
+                Forms\Components\Section::make('Principal Section')
                     ->schema([
                         Forms\Components\TextInput::make('title')
-                            ->label('Título')
+                            ->label('Title')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('subtitle')
-                            ->label('Subtítulo')
+                            ->label('Subtitle')
                             ->required()
                             ->maxLength(255),
                     ]),
 
-                Forms\Components\Section::make('Información del Artista')
+                Forms\Components\Section::make('Info Artist')
                     ->schema([
                         Forms\Components\TextInput::make('artist_name')
-                            ->label('Nombre del Artista')
+                            ->label('Artist Name')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('artist_role')
-                            ->label('Rol del Artista')
+                            ->label('Artist Role')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Textarea::make('description_1')
-                            ->label('Primer Párrafo')
+                            ->label('First Paragraph')
                             ->required()
                             ->rows(4),
                         Forms\Components\Textarea::make('description_2')
-                            ->label('Segundo Párrafo')
+                            ->label('Second Paragraph')
                             ->required()
                             ->rows(4),
                     ]),
 
-                Forms\Components\Section::make('Estadísticas')
+                Forms\Components\Section::make('Stats Section')
                     ->schema([
                         Forms\Components\TextInput::make('years_experience')
-                            ->label('Años de Experiencia')
+                            ->label('Years of Experience')
                             ->required(),
                         Forms\Components\TextInput::make('compositions_count')
-                            ->label('Número de Composiciones')
+                            ->label('Compositions Count')
                             ->required(),
                         Forms\Components\TextInput::make('performances_count')
-                            ->label('Número de Presentaciones')
+                            ->label('Performances Count')
                             ->required(),
                     ])->columns(3),
 
-                Forms\Components\Section::make('Sección de Filosofía')
+                Forms\Components\Section::make('Philosophy Section')
                     ->schema([
                         Forms\Components\TextInput::make('philosophy_title')
-                            ->label('Título de Filosofía')
+                            ->label('Philosophy Title')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Textarea::make('philosophy_quote')
-                            ->label('Cita Filosófica')
+                            ->label('Philosophy Quote')
                             ->required()
                             ->rows(4),
                     ]),
 
-                Forms\Components\Section::make('Llamado a la Acción')
+                Forms\Components\Section::make('Call to Action Section')
                     ->schema([
                         Forms\Components\TextInput::make('cta_title')
-                            ->label('Título CTA')
+                            ->label('Títle CTA')
                             ->required()
                             ->maxLength(255),
                     ]),
