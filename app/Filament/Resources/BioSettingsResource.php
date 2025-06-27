@@ -13,7 +13,7 @@ class BioSettingsResource extends Resource
     protected static ?string $model = BioSettings::class;
     protected static ?string $navigationIcon = 'heroicon-o-user';
     protected static ?string $navigationLabel = 'Bio Page';
-    protected static ?string $modelLabel = 'Configuración de Biografía';
+    protected static ?string $modelLabel = 'Bio Settings';
     protected static bool $shouldRegisterNavigation = true;
 
     public static function form(Form $form): Form
