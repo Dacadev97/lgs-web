@@ -1,17 +1,17 @@
 <?php
 
-
 namespace App\Filament\Resources\BioSettingsResource\Pages;
 
 use App\Filament\Resources\BioSettingsResource;
 use Filament\Resources\Pages\EditRecord;
 use App\Models\BioSettings;
+use Filament\Notifications\Notification;
 
 class EditBioSettings extends EditRecord
 {
     protected static string $resource = BioSettingsResource::class;
 
-    public function mount($record): void
+    protected function mutateFormDataBeforeFill(array $data): array
     {
         $settings = BioSettings::first() ?? BioSettings::create([
             'title' => 'About the Artist',
@@ -28,6 +28,11 @@ class EditBioSettings extends EditRecord
             'cta_title' => 'Explore the Musical Journey'
         ]);
 
-        parent::mount($settings->id);
+        return $settings->toArray();
+    }
+
+    public function getRecord(): BioSettings
+    {
+        return BioSettings::first() ?? BioSettings::create();
     }
 }
