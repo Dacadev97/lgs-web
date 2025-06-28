@@ -17,10 +17,8 @@ class Footer extends Component
         ];
 
         $socialLinks = collect([
-            ['url' => '#', 'icon' => 'facebook'],
-            ['url' => '#', 'icon' => 'instagram'],
-            ['url' => '#', 'icon' => 'twitter'],
-            ['url' => '#', 'icon' => 'youtube'],
+            ['url' => 'https://www.facebook.com/jaimeromerousa', 'icon' => 'facebook'],
+
         ]);
 
         return view('livewire.frontend.footer', [
