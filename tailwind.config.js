@@ -1,3 +1,12 @@
-// Tailwind CSS v4 uses CSS-based configuration
-// Configuration is now done in the CSS file using @theme
-
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+};

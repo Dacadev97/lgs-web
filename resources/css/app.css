@@ -3,12 +3,8 @@
 
 @import "tailwindcss";
 
-@source "../views/**/*.blade.php";
-@source "../views/**/*.php";
-@source "../js/**/*.js";
-@source "../../app/Livewire/**/*.php";
-
-@theme {
+/* Removed unsupported @source and @theme at-rules */
+:root {
     --font-family-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -22,21 +18,44 @@ body {
     @apply flex justify-center space-x-1;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
 .page-link {
-    @apply px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover: bg-gray-100 hover:text-gray-700 transition-colors duration-200;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    color: #6b7280;
+    background-color: #fff;
+    border: 1px solid #d1d5db;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.page-link:hover {
+    background-color: #f3f4f6;
+    color: #374151;
 }
 
 .page-item.active .page-link {
-    @apply bg-amber-500 border-amber-500 text-white hover: bg-amber-600 hover:border-amber-600;
+    background-color: #f59e0b;
+    border-color: #f59e0b;
+    color: #fff;
+}
+
+.page-item.active .page-link:hover {
+    background-color: #d97706;
+    border-color: #d97706;
 }
 
 .page-link:focus {
-    @apply outline-none ring-2 ring-amber-500/50;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.5);
 }
 
-/* Estilos personalizados para reproductores de audio */
 audio {
-    outline: none;
     filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
     border-radius: 0.5rem;
     background: #f9fafb;
@@ -73,10 +92,45 @@ audio:hover {
     border: 3px solid #f3f3f3;
     border-top: 3px solid #f59e0b;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     animation: spin 1s linear infinite;
-    display: inline-block;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to right, #f59e0b, #fb923c);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    transform: scale(1);
+}
+
+.btn-download:hover {
+    background: linear-gradient(to right, #d97706, #ea580c);
+    transform: scale(1.05);
+}
+
+.btn-preview {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background-color: #3b82f6;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    transform: scale(1);
+}
+
+.btn-preview:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
 }
 
 @keyframes spin {
@@ -91,9 +145,9 @@ audio:hover {
 
 /* Estilos para botones de descarga y vista previa */
 .btn-download {
-    @apply inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium rounded-lg hover: from-amber-600 hover:to-orange-600 transition-all duration-200 transform hover:scale-105;
+    @apply inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200 transform hover:scale-105;
 }
 
 .btn-preview {
-    @apply inline-flex items-center px-3 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover: bg-blue-600 transition-all duration-200 transform hover:scale-105;
+    @apply inline-flex items-center px-3 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-all duration-200 transform hover:scale-105;
 }
