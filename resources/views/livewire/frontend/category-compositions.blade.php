@@ -114,7 +114,7 @@
                                                 </div>
                                             @endif
                                             
-                                            <div class="flex justify-between items-center mt-auto">
+                                            <div class="flex justify-between items-center mt-auto flex-wrap gap-2">
                                                 <div class="flex items-center gap-3">
                                                     {{-- Downloads counter --}}
                                                     <div class="flex items-center text-gray-500 text-sm">
@@ -161,11 +161,11 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="flex gap-2">
+                                                <div class="flex gap-2 flex-wrap">
                                                     @if($composition->hasPdf())
                                                         <a href="{{ route('preview.pdf', $composition->id) }}" 
                                                            target="_blank"
-                                                           class="inline-flex items-center px-3 py-2 bg-amber-100 text-amber-700 text-sm font-medium rounded-lg hover:bg-amber-200 transition-all duration-200"
+                                                           class="inline-flex items-center px-2 py-1.5 bg-amber-100 text-amber-700 text-xs sm:text-sm font-medium rounded-lg hover:bg-amber-200 transition-all duration-200"
                                                            title="{{ __('Preview PDF') }}">
                                                             <i class="fas fa-eye mr-1"></i>
                                                             <span class="hidden sm:inline">{{ __('Preview') }}</span>
@@ -174,9 +174,9 @@
                                                     
                                                     @if($composition->hasFiles())
                                                         <a href="{{ route('download.package', $composition->id) }}" 
-                                                           class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200">
-                                                            <i class="fas fa-download mr-2"></i>
-                                                            {{ __('Download') }}
+                                                           class="inline-flex items-center px-2 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs sm:text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200">
+                                                            <i class="fas fa-download mr-1"></i>
+                                                            <span class="hidden sm:inline">{{ __('Download') }}</span>
                                                         </a>
                                                     @endif
                                                 </div>
