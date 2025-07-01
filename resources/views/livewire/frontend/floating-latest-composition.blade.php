@@ -35,14 +35,15 @@
                 </div>
 
                 {{-- Reproductor de Audio --}}
-                @if($latestComposition->mp3)
+                @if($latestComposition->hasAudio())
                     <div class="bg-gray-50/80 rounded-lg p-2">
+
                         <audio 
                             controls 
                             class="w-full h-8"
                             preload="metadata"
                         >
-                            <source src="{{ $latestComposition->mp3 }}" type="audio/mpeg">
+                            <source src="{{ route('serve.audio', $latestComposition->id) }}" type="audio/mpeg">
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>

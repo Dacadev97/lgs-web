@@ -17,9 +17,10 @@ class FloatingLatestComposition extends Component
         $settings = FloatingComposition::first();
 
         if ($settings && $settings->is_active) {
-            // Buscar la composición más reciente por fecha de creación
-            $this->latestComposition = Composition::orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc') // Ordenar por ID como desempate
+            // Buscar la composición más reciente con relaciones necesarias
+            $this->latestComposition = Composition::with(['category', 'media'])
+                ->orderBy('created_at', 'desc')
+                ->orderBy('id', 'desc')
                 ->first();
 
             // Solo mostrar si encontramos una composición
@@ -28,7 +29,8 @@ class FloatingLatestComposition extends Component
             Log::info('FloatingLatestComposition montado:', [
                 'composition_id' => $this->latestComposition?->id,
                 'title' => $this->latestComposition?->title,
-                'created_at' => $this->latestComposition?->created_at,
+                'has_audio' => $this->latestComposition ? $this->latestComposition->hasAudio() : false,
+                'audio_url' => $this->latestComposition ? $this->latestComposition->getAudioUrl() : null,
                 'visible' => $this->visible,
                 'settings_active' => $settings->is_active
             ]);

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Support\Facades\Storage;
 
 class Composition extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
-    
+
     protected $fillable = [
         'title',
         'pdf',
@@ -38,10 +39,10 @@ class Composition extends Model implements HasMedia
     {
         $this->addMediaCollection('pdfs')
             ->acceptsMimeTypes(['application/pdf']);
-            
+
         $this->addMediaCollection('audio')
             ->acceptsMimeTypes(['audio/mpeg', 'audio/mp3', 'audio/wav']);
-            
+
         $this->addMediaCollection('images')
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif']);
     }
@@ -62,10 +63,21 @@ class Composition extends Model implements HasMedia
 
     public function getAudioUrl()
     {
-        if ($this->getFirstMediaUrl('audio')) {
-            return $this->getFirstMediaUrl('audio');
+        // Primero intentamos obtener desde Media Library
+        if ($mediaUrl = $this->getFirstMediaUrl('audio')) {
+            return $mediaUrl;
         }
-        return $this->mp3 ? asset('storage/' . $this->mp3) : null;
+
+        // Luego intentamos desde el campo mp3
+        if ($this->mp3) {
+            // Verificar si existe el archivo
+            if (\Storage::disk('public')->exists($this->mp3)) {
+                return asset('storage/' . $this->mp3);
+            }
+        }
+
+        // Si llegamos aquí, usamos la ruta del controlador
+        return route('serve.audio', $this->id);
     }
 
     public function getThumbnailUrl()
