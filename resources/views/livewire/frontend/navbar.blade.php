@@ -1,13 +1,11 @@
-
-<nav class="bg-white shadow fixed top-0 w-full z-50 text-4xl">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 py-2 text-4xl">
+<nav class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 py-0 relative">
         {{-- Izquierda: Logo y subtítulo --}}
         <div class="flex items-center gap-2 min-w-max">
             <a href="/" class="flex items-center gap-2">
-                <svg class="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="currentColor"/>
-                    <path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <div class="relative">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-32 h-32 -my-2 z-10">
+                </div>
                 <span class="text-lg font-bold text-gray-900 leading-tight">Jaime Romero</span>
             </a>
             <span class="ml-2 text-xs text-gray-500 hidden sm:inline">LatinGuitarScores</span>
