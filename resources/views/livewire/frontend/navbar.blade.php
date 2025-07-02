@@ -1,4 +1,4 @@
-<nav class="bg-white shadow fixed top-0 w-full z-50 mb-20">
+<nav class="bg-white shadow fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 py-0 relative">
         {{-- Izquierda: Logo y subtítulo --}}
         <div class="flex items-center gap-2 min-w-max">
