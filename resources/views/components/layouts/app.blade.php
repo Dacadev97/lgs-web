@@ -39,7 +39,7 @@
     <!-- Livewire Styles -->
     @livewireStyles
 </head>
-<body class="font-sans antialiased bg-white">
+<body class="font-sans antialiased bg-white pt-16">
     @livewire('frontend.navbar')
     
     <main>

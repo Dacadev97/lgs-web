@@ -64,7 +64,7 @@
 </head>
 <body class="font-sans">
     {{-- Contenido principal --}}
-    <main class="relative z-0">
+    <main class="relative z-0 pt-16">
         @livewire('frontend.navbar')
         @livewire('frontend.hero')
         @livewire('frontend.featured-compositions')
