@@ -7,7 +7,7 @@
         </h2>
         <div 
             x-data="{
-                compositions: @js($compositions),
+                compositions: [],
                 current: 0,
                 audio: null,
                 playing: false,
@@ -15,6 +15,9 @@
                 currentTime: 0,
                 seeking: false,
                 init() {
+                    // Inicializar compositions después de que Alpine esté listo
+                    this.compositions = @js(array_values($compositions->toArray()));
+                    
                     this.$nextTick(() => {
                         this.audio = this.$refs.audio;
                         this.audio.addEventListener('loadedmetadata', () => {
@@ -88,8 +91,8 @@
         >
             {{-- Reproductor principal --}}
             <div class="flex-1 bg-white/90 border border-amber-100 rounded-xl shadow p-4 sm:p-8 flex flex-col items-center min-w-[0]">
-                <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2 text-center" x-text="compositions[current].title"></h3>
-                <template x-if="compositions[current].genre">
+                <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2 text-center" x-text="compositions[current]?.title"></h3>
+                <template x-if="compositions[current]?.genre">
                     <span class="mb-4 px-3 py-1 rounded-full border border-amber-200 bg-amber-50 text-amber-700 text-xs font-semibold shadow-sm" x-text="compositions[current].genre"></span>
                 </template>
                 <div class="flex items-center justify-center gap-4 sm:gap-6 my-6">
@@ -154,28 +157,30 @@
                     <span class="text-xs text-gray-500" x-text="duration ? new Date(duration * 1000).toISOString().substr(14, 5) : '0:00'"></span>
                 </div>
                 {{-- Audio oculto --}}
-                <audio x-ref="audio" class="hidden" :src="'/storage/' + compositions[current].mp3" preload="metadata"></audio>
+                <audio x-ref="audio" class="hidden" :src="compositions[current]?.mp3 ? '/storage/' + compositions[current].mp3 : ''" preload="metadata"></audio>
             </div>
             {{-- Lista de composiciones comprimida con scroll interno --}}
             <div class="w-full md:w-64 flex-shrink-0">
                 <div style="height:220px; overflow-y:auto;">
                     <ul style="padding:0; margin:0;">
-                        <template x-for="(comp, idx) in compositions" :key="comp.id">
-                            <li style="height:44px; padding:0; margin:0;" :class="{'border-b border-amber-100': idx !== compositions.length - 1}">
+                        @foreach($compositions as $index => $comp)
+                            <li style="height:44px; padding:0; margin:0;" class="{{ $index < count($compositions) - 1 ? 'border-b border-amber-100' : '' }}">
                                 <button
-                                    @click="select(idx); play()"
+                                    x-on:click="select({{ $index }}); play()"
                                     :class="{
-                                        'bg-amber-100 border-amber-400 text-amber-900': idx === current,
-                                        'bg-white border-transparent text-gray-700 hover:bg-amber-50': idx !== current
+                                        'bg-amber-100 border-amber-400 text-amber-900': current === {{ $index }},
+                                        'bg-white border-transparent text-gray-700 hover:bg-amber-50': current !== {{ $index }}
                                     }"
                                     class="w-full text-left px-4 rounded transition font-medium h-full flex items-center border-0"
                                     style="height:44px; min-height:44px; max-height:44px; padding-top:0; padding-bottom:0;"
                                 >
-                                    <span x-text="comp.title"></span>
-                                    <span class="ml-2 text-xs text-amber-700" x-text="comp.genre"></span>
+                                    <span>{{ $comp->title }}</span>
+                                    @if($comp->genre)
+                                        <span class="ml-2 text-xs text-amber-700">{{ $comp->genre }}</span>
+                                    @endif
                                 </button>
                             </li>
-                        </template>
+                        @endforeach
                     </ul>
                 </div>
             </div>

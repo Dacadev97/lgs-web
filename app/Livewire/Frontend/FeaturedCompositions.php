@@ -11,7 +11,9 @@ class FeaturedCompositions extends Component
 
     public function mount()
     {
-        $this->compositions = FeaturedCompositionsModel::orderBy('order')->get();
+        $compositions = FeaturedCompositionsModel::orderBy('order')->get();
+
+        $this->compositions = $compositions->unique('id');
     }
 
     public function render()
