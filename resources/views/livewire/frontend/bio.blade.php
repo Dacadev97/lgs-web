@@ -3,8 +3,8 @@
     <section class="pt-20 pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">{{ $settings->title }}</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ $settings->subtitle }}</p>
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" data-translatable>{{ $settings->title }}</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" data-translatable>{{ $settings->subtitle }}</p>
             </div>
             
             <!-- Artist Profile Card -->
@@ -26,18 +26,18 @@
                         <!-- Artist Info -->
                         <div class="lg:col-span-3 space-y-6">
                             <div>
-                                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{{ $settings->artist_name }}</h2>
-                                <p class="text-xl text-amber-600 font-semibold mb-6">
+                                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2" data-translatable>{{ $settings->artist_name }}</h2>
+                                <p class="text-xl text-amber-600 font-semibold mb-6" data-translatable>
                                     {{ $settings->artist_role }}
                                 </p>
                             </div>
                             
-                            <div class="space-y-4 text-gray-700 leading-relaxed">
-                                <p class="text-lg">
+                            <div class="space-y-4 text-gray-700 leading-relaxed bio-content">
+                                <p class="text-lg" data-translatable>
                                     {{ $settings->description_1 }}
                                 </p>
                                 
-                                <p class="text-lg">
+                                <p class="text-lg" data-translatable>
                                     {{ $settings->description_2 }}
                                 </p>
                             </div>
@@ -46,15 +46,15 @@
                             <div class="grid grid-cols-3 gap-6 pt-6">
                                 <div class="text-center">
                                     <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">{{ $settings->years_experience }}</div>
-                                    <div class="text-sm lg:text-base text-gray-600 font-medium">{{ __('Years Experience') }}</div>
+                                    <div class="text-sm lg:text-base text-gray-600 font-medium" data-translatable>Años de Experiencia</div>
                                 </div>
                                 <div class="text-center border-x border-gray-200">
                                     <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">{{ $settings->compositions_count }}</div>
-                                    <div class="text-sm lg:text-base text-gray-600 font-medium">{{ __('Compositions') }}</div>
+                                    <div class="text-sm lg:text-base text-gray-600 font-medium" data-translatable>Composiciones</div>
                                 </div>
                                 <div class="text-center">
                                     <div class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2">{{ $settings->performances_count }}</div>
-                                    <div class="text-sm lg:text-base text-gray-600 font-medium">{{ __('Performances') }}</div>
+                                    <div class="text-sm lg:text-base text-gray-600 font-medium" data-translatable>Presentaciones</div>
                                 </div>
                             </div>
                         </div>

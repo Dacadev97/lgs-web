@@ -19,6 +19,11 @@ Route::view('/bio', 'bio.index')->name('bio');
 
 Route::view('/compositions', 'compositions.index')->name('compositions.byCategory');
 
+// Ruta de prueba para el sistema de traducción (solo para desarrollo)
+Route::get('/translation-test', function () {
+    return view('translation-test');
+})->name('translation.test');
+
 Route::get('/download-package/{id}', [\App\Http\Controllers\DownloadController::class, 'package'])->name('download.package');
 Route::get('/preview-pdf/{id}', [\App\Http\Controllers\DownloadController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('/serve-audio/{id}', [\App\Http\Controllers\DownloadController::class, 'serveAudio'])->name('serve.audio');
