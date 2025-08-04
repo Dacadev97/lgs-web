@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Latin Guitar Scores - Jaime Romero | Classical Guitarist & Composer</title>
     <meta name="description" content="Discover the scores, biography, and gallery of Jaime Romero, an internationally awarded Colombian classical guitarist and composer.">
     <meta name="author" content="Jaime Romero">
@@ -33,6 +34,54 @@
         #floating-container > * {
             pointer-events: auto !important;
         }
+        
+        /* Ocultar completamente el widget de Google Translate */
+        #google_translate_element {
+            display: none !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+        
+        /* Ocultar todos los elementos relacionados con Google Translate */
+        .goog-te-gadget,
+        .goog-te-combo,
+        .goog-te-banner-frame,
+        .VIpgJd-yAWNEb-L7lbkb,
+        .goog-te-gadget-simple,
+        .VIpgJd-ZVi9od-xl07Ob-lTBxed {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        /* Ocultar la barra de traducción que aparece arriba después de traducir */
+        .goog-te-banner,
+        .goog-te-banner-frame,
+        body > .skiptranslate,
+        #goog-gt-tt,
+        .goog-tooltip,
+        .goog-te-spinner-pos,
+        .goog-te-balloon-frame {
+            display: none !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+        }
+        
+        /* Permitir que los iframes de traducción funcionen pero mantenerlos ocultos */
+        iframe.VIpgJd-ZVi9od-xl07Ob-OEVmcd,
+        iframe[class*="goog-te"] {
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+        .goog-te-banner-frame {
+            display: none !important;
+        }
     </style>
 
     @php
@@ -62,7 +111,7 @@
         @endif
     @endif
 </head>
-<body class="font-sans">
+<body class="font-sans notranslate">
     {{-- Contenido principal --}}
     <main class="relative z-0 pt-16">
         @livewire('frontend.navbar')
@@ -77,9 +126,15 @@
         @livewire('frontend.floating-latest-composition')
     </div>
 
+    {{-- Google Translate Element --}}
+    <div id="google_translate_element"></div>
+
     {{-- Scripts al final del body --}}
     @livewireScripts
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    {{-- Translation System --}}
+    <script src="{{ asset('js/translation.js') }}" defer></script>
 
 </body>
 </html>

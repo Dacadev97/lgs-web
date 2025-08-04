@@ -66,7 +66,7 @@
                     <button type="button" id="translate-es" class="text-sm border rounded p-2 bg-white hover:bg-amber-100 transition-colors duration-200 flex items-center gap-1">
                         🇪🇸 ES
                     </button>
-                    <button type="button" id="translate-en" class="text-sm border rounded p-2 bg-amber-200 hover:bg-amber-300 font-bold transition-colors duration-200 flex items-center gap-1">
+                    <button type="button" id="translate-en" class="notranslate text-sm border rounded p-2 bg-amber-200 hover:bg-amber-300 font-bold transition-colors duration-200 flex items-center gap-1">
                         🇺🇸 EN
                     </button>
                 </div>

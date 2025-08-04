@@ -13,7 +13,7 @@
         >
             {{-- Banner con botón de cerrar --}}
              <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1.5 flex items-center justify-between">
-                <span class="text-xs font-bold" data-translatable>Latest Composition</span>
+                <span class="text-xs font-bold">Latest Composition</span>
                 <button 
                     @click="show = false"
                     wire:click="close"
@@ -26,7 +26,7 @@
             <div class="p-4 space-y-3">
                 {{-- Título y Categoría --}}
                 <div>
-                    <h4 class="text-lg font-medium text-amber-600 truncate hover:text-amber-700 transition-colors cursor-pointer latest-composition-title" data-translatable>
+                    <h4 class="text-lg font-medium text-amber-600 truncate hover:text-amber-700 transition-colors cursor-pointer latest-composition-title">
                         {{ $latestComposition->title }}
                     </h4>
                     @if($latestComposition->category)

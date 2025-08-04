@@ -9,20 +9,20 @@
                             <div class="bg-gradient-to-r from-amber-500 to-orange-500 p-4 rounded-t-xl">
                                 <h5 class="text-white font-semibold text-lg flex items-center">
                                     <i class="fas fa-list mr-2"></i>
-                                    {{ __('Categories') }}
+                                    <span>Categories</span>
                                 </h5>
                             </div>
                             <div class="p-0">
                                 <div class="divide-y divide-amber-100">
                                     <a href="{{ route('compositions.byCategory') }}" 
                                        class="block px-4 py-3 text-sm hover:bg-amber-50 transition-colors duration-200 {{ !$selectedCategory ? 'bg-amber-100 text-amber-800 font-medium border-r-4 border-amber-500' : 'text-gray-700' }}">
-                                        {{ __('All Categories') }}
+                                        <span>All Categories</span>
                                     </a>
                                     @foreach($this->categories as $category)
                                         <a href="{{ route('compositions.byCategory', ['category' => $category->name]) }}" 
                                            class="block px-4 py-3 text-sm hover:bg-amber-50 transition-colors duration-200 {{ $selectedCategory == $category->id ? 'bg-amber-100 text-amber-800 font-medium border-r-4 border-amber-500' : 'text-gray-700' }}">
                                             <div class="flex justify-between items-center">
-                                                <span>{{ $category->name }}</span>
+                                                <span class="category-name">{{ $category->name }}</span>
                                                 <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">({{ $category->compositions_count }})</span>
                                             </div>
                                         </a>
@@ -55,13 +55,13 @@
                             <div>
                                 <h1 class="text-3xl font-bold text-gray-900">
                                     @if($selectedCategory && $this->selectedCategoryModel)
-                                        {{ $this->selectedCategoryModel->name }}
+                                        <span class="category-name">{{ $this->selectedCategoryModel->name }}</span>
                                     @else
-                                        {{ __('All Compositions') }}
+                                        <span>All Compositions</span>
                                     @endif
                                 </h1>
                                 <p class="text-gray-600 mt-1">
-                                    {{ $this->compositions->total() }} {{ __('compositions found') }}
+                                    {{ $this->compositions->total() }} <span>compositions found</span>
                                 </p>
                             </div>
                             
@@ -70,12 +70,12 @@
                                 <input type="text" wire:model.live="search" 
                                         value="{{ request()->query('search', '') }}"
                                        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200" 
-                                       placeholder="{{ __('Search compositions...') }}">
+                                       placeholder="Search compositions...">
                                 <select wire:model.live="sortBy" 
                                         class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200">
-                                    <option value="title">{{ __('Title') }}</option>
-                                    <option value="created_at">{{ __('Date Added') }}</option>
-                                    <option value="downloads">{{ __('Downloads') }}</option>
+                                    <option value="title">Title</option>
+                                    <option value="created_at">Date Added</option>
+                                    <option value="downloads">Downloads</option>
                                 </select>
                             </div>
                         </div>
@@ -97,9 +97,9 @@
                                             @endif
                                         </div>
                                         <div class="flex-1 p-4 flex flex-col">
-                                            <h6 class="font-semibold text-gray-900 mb-2 text-lg">{{ $composition->title }}</h6>
+                                            <h6 class="font-semibold text-gray-900 mb-2 text-lg composition-title">{{ $composition->title }}</h6>
                                             @if($composition->category)
-                                                <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full mb-2 self-start">
+                                                <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full mb-2 self-start category-name">
                                                     {{ $composition->category->name }}
                                                 </span>
                                             @endif
@@ -109,7 +109,7 @@
                                                 <div class="mb-3">
                                                     <audio controls class="w-full h-8 rounded-lg">
                                                         <source src="{{ route('serve.audio', $composition->id) }}" type="audio/mpeg">
-                                                        Su navegador no soporta audio HTML5.
+                                                        <span>Your browser does not support HTML5 audio.</span>
                                                     </audio>
                                                 </div>
                                             @endif
@@ -139,7 +139,7 @@
                                                         <button 
                                                             @click="copyLink()"
                                                             class="inline-flex items-center p-1.5 text-gray-500 hover:text-amber-600 transition-colors rounded-full hover:bg-amber-50"
-                                                            title="{{ __('Share') }}"
+                                                            title="Share"
                                                         >
                                                             <i class="fas fa-share-alt"></i>
                                                         </button>
@@ -156,7 +156,7 @@
                                                             class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap"
                                                             style="display: none;"
                                                         >
-                                                            {{ __('Link copied!') }}
+                                                            <span>Link copied!</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,9 +166,9 @@
                                                         <a href="{{ route('preview.pdf', $composition->id) }}" 
                                                            target="_blank"
                                                            class="inline-flex items-center px-2 py-1.5 bg-amber-100 text-amber-700 text-xs sm:text-sm font-medium rounded-lg hover:bg-amber-200 transition-all duration-200"
-                                                           title="{{ __('Preview PDF') }}">
+                                                           title="Preview PDF">
                                                             <i class="fas fa-eye mr-1"></i>
-                                                            <span class="hidden sm:inline">{{ __('Preview') }}</span>
+                                                            <span class="hidden sm:inline">Preview</span>
                                                         </a>
                                                     @endif
                                                     
@@ -176,7 +176,7 @@
                                                         <a href="{{ route('download.package', $composition->id) }}" 
                                                            class="inline-flex items-center px-2 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs sm:text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200">
                                                             <i class="fas fa-download mr-1"></i>
-                                                            <span class="hidden sm:inline">{{ __('Download') }}</span>
+                                                            <span class="hidden sm:inline">Download</span>
                                                         </a>
                                                     @endif
                                                 </div>
@@ -190,19 +190,19 @@
                                         <div class="mb-8">
                                             <i class="fas fa-music text-6xl text-gray-300"></i>
                                         </div>
-                                        <h4 class="text-2xl font-semibold text-gray-700 mb-4">{{ __('No compositions found') }}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700 mb-4">No compositions found</h4>
                                         <p class="text-gray-500 mb-6 max-w-md mx-auto">
                                             @if($search)
-                                                {{ __('No compositions match your search criteria.') }}
+                                                <span>No compositions match your search criteria.</span>
                                             @else
-                                                {{ __('No compositions available in this category.') }}
+                                                <span>No compositions available in this category.</span>
                                             @endif
                                         </p>
                                         @if($search)
                                             <button wire:click="$set('search', '')" 
                                                     class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200">
                                                 <i class="fas fa-eraser mr-2"></i>
-                                                {{ __('Clear Search') }}
+                                                <span>Clear Search</span>
                                             </button>
                                         @endif
                                     </div>
